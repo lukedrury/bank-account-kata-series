@@ -29,5 +29,9 @@ namespace BankingKata
             }
             return outstring;
         }
+
+        public void Withdrawal(Money money, DateTime dateTime)
+        {
+        }
     }
 }
