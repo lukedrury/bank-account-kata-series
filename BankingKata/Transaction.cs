@@ -33,5 +33,10 @@ namespace BankingKata
                 return ((m_Amount != null ? m_Amount.GetHashCode() : 0)*397) ^ m_DateTime.GetHashCode();
             }
         }
+
+        public override string ToString()
+        {
+            return "Transaction: " + m_Amount + ", Date: " + m_DateTime;
+        }
     }
 }

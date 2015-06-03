@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace BankingKata
 {
@@ -11,6 +13,16 @@ namespace BankingKata
         public Transaction LastTransaction()
         {
             return null;
+        }
+
+        public override string ToString()
+        {
+            string outstring = "";
+            foreach (var transaction in m_TransactionLog)
+            {
+                outstring += transaction.ToString() + "\n";
+            }
+            return outstring;
         }
     }
 }
