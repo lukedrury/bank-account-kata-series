@@ -51,5 +51,10 @@
         {
             return m1.m_Value <= m2.m_Value;
         }
+
+        public static Money operator -(Money m1)
+        {
+            return new Money(-m1.m_Value);
+        }
     }
 }

@@ -32,6 +32,7 @@ namespace BankingKata
 
         public void Withdrawal(Money money, DateTime dateTime)
         {
+            m_TransactionLog.Add(new Transaction(-money, dateTime));
         }
     }
 }
