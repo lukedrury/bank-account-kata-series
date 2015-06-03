@@ -68,5 +68,15 @@ namespace BankingKataTests
             var expectedTransaction = new Transaction(new Money(-3), new DateTime(2));
             Assert.That(lastTransaction, Is.EqualTo(expectedTransaction));
         }
+
+        [TestCase(0)]
+        [TestCase(-1)]
+        [TestCase(-10)]
+        public void TheWithdrawalOnlyAcceptsValuesGreaterThanZero(int amount)
+        {
+            var account = new Account();
+
+            Assert.Throws<InvalidWithdrawalException>(() => { account.Withdrawal(new Money(amount), new DateTime(0)); });
+        }
     }
 }
