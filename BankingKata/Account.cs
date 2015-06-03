@@ -32,6 +32,8 @@ namespace BankingKata
 
         public void Withdrawal(Money money, DateTime dateTime)
         {
+            if (money <= new Money(0)) throw new InvalidWithdrawalException();
+
             m_TransactionLog.Add(new Transaction(-money, dateTime));
         }
     }
