@@ -6,13 +6,16 @@ namespace BankingKata
 {
     public class Account
     {
+        private readonly List<Transaction> m_TransactionLog = new List<Transaction>();
+
         public void Deposit(Money money, DateTime dateTime)
         {
+            m_TransactionLog.Add(new Transaction(money, dateTime));
         }
 
         public Transaction LastTransaction()
         {
-            return null;
+            return m_TransactionLog.Last();
         }
 
         public override string ToString()
