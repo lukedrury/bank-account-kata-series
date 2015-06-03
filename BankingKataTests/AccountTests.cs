@@ -33,12 +33,14 @@ namespace BankingKataTests
             Assert.That(lastTransaction, Is.EqualTo(expectedTransaction));
         }
 
-        [Test]
-        public void TheDepositOnlyAcceptsValuesGreaterThanZero()
+        [TestCase(0)]
+        [TestCase(-1)]
+        [TestCase(-10)]
+        public void TheDepositOnlyAcceptsValuesGreaterThanZero(int amount)
         {
             var account = new Account();
 
-            Assert.Throws<InvalidDepositException>(() => { account.Deposit(new Money(-1), new DateTime(0)); });
+            Assert.Throws<InvalidDepositException>(() => { account.Deposit(new Money(amount), new DateTime(0)); });
         }
     }
 }
