@@ -10,6 +10,8 @@ namespace BankingKata
 
         public void Deposit(Money money, DateTime dateTime)
         {
+            if (money < new Money(0)) throw new InvalidDepositException();
+
             m_TransactionLog.Add(new Transaction(money, dateTime));
         }
 

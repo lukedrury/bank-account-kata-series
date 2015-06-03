@@ -31,5 +31,15 @@
         {
             return m_Value.GetHashCode();
         }
+
+        public static bool operator <(Money m1, Money m2)
+        {
+            return m1.m_Value < m2.m_Value;
+        }
+
+        public static bool operator >(Money m1, Money m2)
+        {
+            return m1.m_Value > m2.m_Value;
+        }
     }
 }
