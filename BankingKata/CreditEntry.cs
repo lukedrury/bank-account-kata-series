@@ -24,6 +24,11 @@ namespace BankingKata
             return balance + _amount;
         }
 
+        public ITransaction Accept(IDateVisitor visitor)
+        {
+            return visitor.Visit(_date);
+        }
+
         public override string ToString()
         {
             return _date + ", £" + _amount;

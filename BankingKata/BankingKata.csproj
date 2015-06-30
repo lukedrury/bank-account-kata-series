@@ -41,9 +41,12 @@
   <ItemGroup>
     <Compile Include="Account.cs" />
     <Compile Include="DebitEntry.cs" />
+    <Compile Include="IDateVisitor.cs" />
     <Compile Include="ILedger.cs" />
     <Compile Include="ITransaction.cs" />
     <Compile Include="ITransactionVisitor.cs" />
+    <Compile Include="LastTransactionDateVisitor.cs" />
+    <Compile Include="LastTransactionVisitor.cs" />
     <Compile Include="Ledger.cs" />
     <Compile Include="Money.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -39,7 +39,8 @@ namespace BankingKata
 
         public void PrintLastTransaction()
         {
-
+            var mostRecentTransaction = _transactionLog.Accept(new LastTransactionVisitor(), new CreditEntry(new Money(0m), DateTime.Now));
+            Console.Write("Last transaction: " + mostRecentTransaction);
         }
     }
 }

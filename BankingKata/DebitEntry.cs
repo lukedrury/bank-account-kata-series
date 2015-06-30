@@ -18,6 +18,11 @@ namespace BankingKata
             return balance - _amount;
         }
 
+        public ITransaction Accept(IDateVisitor visitor)
+        {
+            return visitor.Visit(_date);
+        }
+
         public override bool Equals(object obj)
         {
             var transaction = (obj as DebitEntry);
