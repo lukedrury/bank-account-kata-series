@@ -36,5 +36,10 @@ namespace BankingKata
         {
             Console.Write("Balance: £" + CalculateBalance());
         }
+
+        public void PrintLastTransaction()
+        {
+
+        }
     }
 }

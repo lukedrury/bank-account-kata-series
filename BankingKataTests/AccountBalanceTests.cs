@@ -21,5 +21,20 @@ namespace BankingKataTests
             var outputString = stringWriter.ToString();
             Assert.That(outputString, Is.EqualTo("Balance: £1.00"));
         }
+
+        [Test]
+        public void PrintedTransactionIsLastTransaction()
+        {
+            var stringWriter = new StringWriter();
+            Console.SetOut(stringWriter);
+            var account = new Account();
+            account.Deposit(new Money(1m));
+            account.Deposit(new Money(2m));
+
+            account.PrintLastTransaction();
+
+            var outputString = stringWriter.ToString();
+            Assert.That(outputString, Is.EqualTo("Last transaction: 30 Jun 15, £2.00"));
+        }
     }
 }
