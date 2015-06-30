@@ -1,3 +1,5 @@
+using System;
+
 namespace BankingKata
 {
     public class Account
@@ -32,6 +34,7 @@ namespace BankingKata
 
         public void Print()
         {
+            Console.Write("Balance: £" + CalculateBalance());
         }
     }
 }
