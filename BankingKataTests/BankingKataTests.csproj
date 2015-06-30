@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountAcceptanceTests.cs" />
+    <Compile Include="AccountBalanceTests.cs" />
     <Compile Include="AccountTests.cs" />
     <Compile Include="MoneyTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

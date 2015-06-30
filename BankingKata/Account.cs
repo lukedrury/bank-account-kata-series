@@ -29,5 +29,9 @@ namespace BankingKata
             var debitEntry = new DebitEntry(money);
             _transactionLog.Record(debitEntry);
         }
+
+        public void Print()
+        {
+        }
     }
 }
