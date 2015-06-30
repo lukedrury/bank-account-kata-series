@@ -1,4 +1,5 @@
-﻿using BankingKata;
+﻿using System;
+using BankingKata;
 using NSubstitute;
 using NSubstitute.Core;
 using NUnit.Framework;
@@ -17,7 +18,7 @@ namespace BankingKataTests
 
             account.Deposit(money);
 
-            CreditEntry deposit = new CreditEntry(money);
+            CreditEntry deposit = new CreditEntry(money, DateTime.Now);
             ledger.Received().Record(deposit);
         }
         [Test]
@@ -29,7 +30,7 @@ namespace BankingKataTests
 
             account.Withdraw(money);
 
-            var debitEntry = new DebitEntry(money);
+            var debitEntry = new DebitEntry(money, DateTime.Now);
             ledger.Received().Record(debitEntry);
         }
 

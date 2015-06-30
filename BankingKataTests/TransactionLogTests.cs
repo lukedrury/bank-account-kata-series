@@ -1,4 +1,5 @@
-﻿using BankingKata;
+﻿using System;
+using BankingKata;
 using NUnit.Framework;
 
 namespace BankingKataTests
@@ -20,8 +21,8 @@ namespace BankingKataTests
         {
             var transactionLog = new Ledger();
 
-            transactionLog.Record(new CreditEntry(new Money(1m)));
-            transactionLog.Record(new CreditEntry(new Money(3m)));
+            transactionLog.Record(new CreditEntry(new Money(1m), DateTime.Now));
+            transactionLog.Record(new CreditEntry(new Money(3m), DateTime.Now));
 
             var actualTotal = transactionLog.Accept(new BalanceCalculatingVisitor(), new Money(0m));
 
@@ -34,8 +35,8 @@ namespace BankingKataTests
         {
             var transactionLog = new Ledger();
 
-            transactionLog.Record(new DebitEntry(new Money(1m)));
-            transactionLog.Record(new DebitEntry(new Money(3m)));
+            transactionLog.Record(new DebitEntry(new Money(1m), DateTime.Now));
+            transactionLog.Record(new DebitEntry(new Money(3m), DateTime.Now));
 
             var actualTotal = transactionLog.Accept(new BalanceCalculatingVisitor(), new Money(0m));
 

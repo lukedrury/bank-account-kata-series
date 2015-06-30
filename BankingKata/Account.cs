@@ -17,7 +17,7 @@ namespace BankingKata
 
         public void Deposit(Money money)
         {
-            var depositTransaction = new CreditEntry(money);
+            var depositTransaction = new CreditEntry(money, DateTime.Now);
             _transactionLog.Record(depositTransaction);
         }
 
@@ -28,7 +28,7 @@ namespace BankingKata
 
         public void Withdraw(Money money)
         {
-            var debitEntry = new DebitEntry(money);
+            var debitEntry = new DebitEntry(money, DateTime.Now);
             _transactionLog.Record(debitEntry);
         }
 

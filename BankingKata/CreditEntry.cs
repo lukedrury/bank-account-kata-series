@@ -1,12 +1,16 @@
-﻿namespace BankingKata
+﻿using System;
+
+namespace BankingKata
 {
     public class CreditEntry : ITransaction
     {
         private readonly Money _amount;
+        private readonly DateTime _date;
 
-        public CreditEntry(Money amount)
+        public CreditEntry(Money amount, DateTime date)
         {
             _amount = amount;
+            _date = date;
         }
 
         public override bool Equals(object obj)
@@ -22,7 +26,7 @@
 
         public override string ToString()
         {
-            return "£" + _amount;
+            return _date + ", £" + _amount;
         }
     }
 }
