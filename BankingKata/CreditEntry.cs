@@ -19,5 +19,10 @@
         {
             return balance + _amount;
         }
+
+        public override string ToString()
+        {
+            return "£" + _amount;
+        }
     }
 }

@@ -19,5 +19,10 @@
             var transaction = (obj as DebitEntry);
             return transaction != null && _amount.Equals(transaction._amount);
         }
+
+        public override string ToString()
+        {
+            return "£" + _amount;
+        }
     }
 }
