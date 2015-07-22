@@ -1,7 +1,7 @@
 ﻿using BankingKata;
 using NSubstitute;
-using NSubstitute.Core;
 using NUnit.Framework;
+using System;
 
 namespace BankingKataTests
 {
@@ -15,11 +15,12 @@ namespace BankingKataTests
             var money = new Money(3m);
             var account = new Account(ledger);
 
-            account.Deposit(money);
+            account.Deposit(DateTime.Now, money);
 
-            CreditEntry deposit = new CreditEntry(money);
+            CreditEntry deposit = new CreditEntry(DateTime.Now, money);
             ledger.Received().Record(deposit);
         }
+
         [Test]
         public void AccountRecordsWithdrawalInTransactionLog()
         {
@@ -27,9 +28,9 @@ namespace BankingKataTests
             var money = new Money(3m);
             var account = new Account(ledger);
 
-            account.Withdraw(money);
+            account.Withdraw(DateTime.Now, money);
 
-            var debitEntry = new DebitEntry(money);
+            var debitEntry = new DebitEntry(DateTime.Now, money);
             ledger.Received().Record(debitEntry);
         }
 

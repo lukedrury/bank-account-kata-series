@@ -35,7 +35,7 @@ namespace BankingKataTests
         [Test]
         public void ToStringConvertsTheDecimalValueToAString()
         {
-            Assert.That(new Money(4m).ToString(), Is.EqualTo("4.00"));
+            Assert.That(new Money(4m).ToString(), Is.EqualTo("£4.00"));
         }
     }
 }

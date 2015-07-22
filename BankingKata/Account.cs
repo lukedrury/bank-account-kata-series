@@ -1,3 +1,5 @@
+using System;
+
 namespace BankingKata
 {
     public class Account
@@ -9,13 +11,14 @@ namespace BankingKata
             _transactionLog = transactionLog;
         }
 
-        public Account() : this(new Ledger())
+        public Account()
+            : this(new Ledger())
         {
         }
 
-        public void Deposit(Money money)
+        public void Deposit(DateTime transactionDate, Money money)
         {
-            var depositTransaction = new CreditEntry(money);
+            var depositTransaction = new CreditEntry(transactionDate, money);
             _transactionLog.Record(depositTransaction);
         }
 
@@ -24,10 +27,21 @@ namespace BankingKata
             return _transactionLog.Accept(new BalanceCalculatingVisitor(), new Money(0m));
         }
 
-        public void Withdraw(Money money)
+        public void Withdraw(DateTime transactionDate, Money money)
         {
-            var debitEntry = new DebitEntry(money);
+            var debitEntry = new DebitEntry(transactionDate, money);
             _transactionLog.Record(debitEntry);
+        }
+
+        public void PrintBalance(IPrinter printer)
+        {
+            var balance = CalculateBalance();
+            printer.PrintBalance(balance);
+        }
+
+        public void PrintLastTransaction(IPrinter printer)
+        {
+            printer.PrintLastTransaction(_transactionLog);
         }
     }
 }

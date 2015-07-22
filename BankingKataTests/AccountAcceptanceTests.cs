@@ -1,6 +1,6 @@
-﻿using System.Data.SqlTypes;
-using BankingKata;
+﻿using BankingKata;
 using NUnit.Framework;
+using System;
 
 namespace BankingKataTests
 {
@@ -11,9 +11,9 @@ namespace BankingKataTests
         public void DepositingCashIncreasesTheAccountBalance()
         {
             var account = new Account();
-            
-            account.Deposit(new Money(5.00m));
-            
+
+            account.Deposit(DateTime.Now, new Money(5.00m));
+
             Money expected = new Money(5.00m);
             Assert.That(account.CalculateBalance(), Is.EqualTo(expected));
         }
@@ -22,8 +22,8 @@ namespace BankingKataTests
         public void WithdrawingCashDecreasesTheAccountBalance()
         {
             var account = new Account();
-            account.Deposit(new Money(6m));
-            account.Withdraw(new Money(2m));
+            account.Deposit(DateTime.Now, new Money(6m));
+            account.Withdraw(DateTime.Now, new Money(2m));
 
             var expectedBalance = new Money(4m);
             Assert.That(account.CalculateBalance(), Is.EqualTo(expectedBalance));
