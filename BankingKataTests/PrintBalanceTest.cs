@@ -94,7 +94,7 @@ namespace BankingKataTests
         public void ChequeWithdrawalIsPrinted(int chequeNumber)
         {
             var chequeNumberProvider = Substitute.For<IChequeNumberProvider>();
-            chequeNumberProvider.Next().Returns(123456);
+            chequeNumberProvider.Next().Returns(chequeNumber);
             var account = new Account(new Ledger(), chequeNumberProvider);
             account.WithdrawCheque(new DateTime(2015, 07, 13), new Money(123m));
 
