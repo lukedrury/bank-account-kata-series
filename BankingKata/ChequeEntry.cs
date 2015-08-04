@@ -23,5 +23,10 @@ namespace BankingKata
         {
             return balance - transactionAmount;
         }
+        
+        public override string ToString()
+        {
+            return string.Format("CHQ {0} ({1})", transactionDate.ToString("dd MMM yyyy"), transactionAmount);
+        }
     }
 }
