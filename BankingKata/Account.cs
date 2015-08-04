@@ -46,6 +46,8 @@ namespace BankingKata
 
         public void WithdrawCheque(DateTime transactionDate, Money money)
         {
+            var chequeEntry = new ChequeEntry(transactionDate, money);
+            _transactionLog.Record(chequeEntry);
         }
     }
 }
