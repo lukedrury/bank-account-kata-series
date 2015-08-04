@@ -102,7 +102,7 @@ namespace BankingKataTests
             account.PrintLastTransaction(printer);
 
             var output = stringWriter.GetStringBuilder();
-            var expected = "Last transaction: CHQ 13 Jul 2015 (£123.00)";
+            var expected = "Last transaction: CHQ 123456 13 Jul 2015 (£123.00)";
             Assert.That(output.ToString(), Is.EqualTo(expected));
         }
     }
