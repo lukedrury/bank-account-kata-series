@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account.cs" />
+    <Compile Include="ChequeEntry.cs" />
     <Compile Include="DebitEntry.cs" />
     <Compile Include="ILedger.cs" />
     <Compile Include="ITransaction.cs" />

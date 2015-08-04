@@ -43,5 +43,9 @@ namespace BankingKata
         {
             printer.PrintLastTransaction(_transactionLog);
         }
+
+        public void WithdrawCheque(DateTime transactionDate, Money money)
+        {
+        }
     }
 }
