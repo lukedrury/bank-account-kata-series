@@ -21,7 +21,7 @@ namespace BankingKata
 
         public Money ApplyTo(Money balance)
         {
-            return balance;
+            return balance - transactionAmount;
         }
     }
 }
