@@ -26,7 +26,7 @@ namespace BankingKata
 
         public override string ToString()
         {
-            return string.Format("{0} ({1})", transactionDate.ToString("dd MMM yyyy"), transactionAmount);
+            return string.Format("ATM {0} ({1})", transactionDate.ToString("dd MMM yyyy"), transactionAmount);
         }
     }
 }
