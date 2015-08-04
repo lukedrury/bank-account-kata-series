@@ -43,5 +43,19 @@ namespace BankingKataTests
             var expectedTotal = new Money(-4m);
             Assert.That(actualTotal, Is.EqualTo(expectedTotal));
         }
+
+        [Test]
+        public void TheTotalOfALogWithOnlyChequeWithdrawalsIsTheirNegativeSum()
+        {
+            var transactionLog = new Ledger();
+
+            transactionLog.Record(new ChequeEntry(DateTime.Now, new Money(1m)));
+            transactionLog.Record(new ChequeEntry(DateTime.Now, new Money(3m)));
+
+            var actualTotal = transactionLog.Accept(new BalanceCalculatingVisitor(), new Money(0m));
+
+            var expectedTotal = new Money(-4m);
+            Assert.That(actualTotal, Is.EqualTo(expectedTotal));
+        }
     }
 }
