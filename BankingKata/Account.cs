@@ -5,14 +5,17 @@ namespace BankingKata
     public class Account
     {
         private readonly ILedger _transactionLog;
+        private readonly IChequeNumberProvider _ChequeNumberProvider;
 
-        public Account(ILedger transactionLog)
+
+        public Account(ILedger transactionLog, IChequeNumberProvider chequeNumberProvider)
         {
             _transactionLog = transactionLog;
+            _ChequeNumberProvider = chequeNumberProvider;
         }
 
         public Account()
-            : this(new Ledger())
+            : this(new Ledger(), new ChequeNumberProvider())
         {
         }
 
@@ -46,7 +49,8 @@ namespace BankingKata
 
         public void WithdrawCheque(DateTime transactionDate, Money money)
         {
-            var chequeEntry = new ChequeEntry(transactionDate, money);
+            var chequeNumberProvider = _ChequeNumberProvider;
+            var chequeEntry = new ChequeEntry(transactionDate, money, chequeNumberProvider.Next());
             _transactionLog.Record(chequeEntry);
         }
     }

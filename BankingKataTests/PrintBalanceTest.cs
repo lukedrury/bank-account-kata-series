@@ -89,10 +89,13 @@ namespace BankingKataTests
             Assert.That(output.ToString(), Is.EqualTo(expected));
         }
 
-        [Test]
-        public void ChequeWithdrawalIsPrinted()
+        [TestCase(123456)]
+        [TestCase(234567)]
+        public void ChequeWithdrawalIsPrinted(int chequeNumber)
         {
-            var account = new Account();
+            var chequeNumberProvider = Substitute.For<IChequeNumberProvider>();
+            chequeNumberProvider.Next().Returns(123456);
+            var account = new Account(new Ledger(), chequeNumberProvider);
             account.WithdrawCheque(new DateTime(2015, 07, 13), new Money(123m));
 
             var stringWriter = new StringWriter();
@@ -102,7 +105,7 @@ namespace BankingKataTests
             account.PrintLastTransaction(printer);
 
             var output = stringWriter.GetStringBuilder();
-            var expected = "Last transaction: CHQ 123456 13 Jul 2015 (£123.00)";
+            var expected = string.Format("Last transaction: CHQ {0} 13 Jul 2015 (£123.00)", chequeNumber);
             Assert.That(output.ToString(), Is.EqualTo(expected));
         }
     }

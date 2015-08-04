@@ -8,11 +8,11 @@ namespace BankingKata
         private readonly Money transactionAmount;
         private readonly int chequeNumber;
 
-        public ChequeEntry(DateTime transactionDate, Money transactionAmount)
+        public ChequeEntry(DateTime transactionDate, Money transactionAmount, int chequeNumber)
         {
             this.transactionDate = transactionDate;
             this.transactionAmount = transactionAmount;
-            this.chequeNumber = 123456;
+            this.chequeNumber = chequeNumber;
         }
 
         public override bool Equals(object obj)

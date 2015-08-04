@@ -41,7 +41,9 @@
   <ItemGroup>
     <Compile Include="Account.cs" />
     <Compile Include="ChequeEntry.cs" />
+    <Compile Include="ChequeNumberProvider.cs" />
     <Compile Include="DebitEntry.cs" />
+    <Compile Include="IChequeNumberProvider.cs" />
     <Compile Include="ILedger.cs" />
     <Compile Include="ITransaction.cs" />
     <Compile Include="ITransactionVisitor.cs" />

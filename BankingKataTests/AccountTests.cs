@@ -13,7 +13,7 @@ namespace BankingKataTests
         {
             var ledger = Substitute.For<ILedger>();
             var money = new Money(3m);
-            var account = new Account(ledger);
+            var account = new Account(ledger, new ChequeNumberProvider());
 
             account.Deposit(DateTime.Now, money);
 
@@ -26,7 +26,7 @@ namespace BankingKataTests
         {
             var ledger = Substitute.For<ILedger>();
             var money = new Money(3m);
-            var account = new Account(ledger);
+            var account = new Account(ledger, new ChequeNumberProvider());
 
             account.Withdraw(DateTime.Now, money);
 
@@ -39,11 +39,11 @@ namespace BankingKataTests
         {
             var ledger = Substitute.For<ILedger>();
             var money = new Money(3m);
-            var account = new Account(ledger);
+            var account = new Account(ledger, new ChequeNumberProvider());
 
             account.WithdrawCheque(DateTime.Now, money);
 
-            var chequeEntry = new ChequeEntry(DateTime.Now, money);
+            var chequeEntry = new ChequeEntry(DateTime.Now, money, 123456);
             ledger.Received().Record(chequeEntry);
         }
         
@@ -51,7 +51,7 @@ namespace BankingKataTests
         public void CalculateBalanceTotalsAllDepositsMadeToTheAccount()
         {
             var ledger = Substitute.For<ILedger>();
-            var account = new Account(ledger);
+            var account = new Account(ledger, new ChequeNumberProvider());
 
             account.CalculateBalance();
 
@@ -64,7 +64,7 @@ namespace BankingKataTests
             var expectedBalance = new Money(13m);
             var ledger = Substitute.For<ILedger>();
             ledger.Accept(Arg.Any<BalanceCalculatingVisitor>(), new Money(0m)).Returns(expectedBalance);
-            var account = new Account(ledger);
+            var account = new Account(ledger, new ChequeNumberProvider());
 
             var actualBalance = account.CalculateBalance();
 

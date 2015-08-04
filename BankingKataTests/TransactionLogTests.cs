@@ -49,8 +49,8 @@ namespace BankingKataTests
         {
             var transactionLog = new Ledger();
 
-            transactionLog.Record(new ChequeEntry(DateTime.Now, new Money(1m)));
-            transactionLog.Record(new ChequeEntry(DateTime.Now, new Money(3m)));
+            transactionLog.Record(new ChequeEntry(DateTime.Now, new Money(1m), 123456));
+            transactionLog.Record(new ChequeEntry(DateTime.Now, new Money(3m), 123456));
 
             var actualTotal = transactionLog.Accept(new BalanceCalculatingVisitor(), new Money(0m));
 
