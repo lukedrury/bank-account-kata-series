@@ -6,11 +6,13 @@ namespace BankingKata
     {
         private readonly DateTime transactionDate;
         private readonly Money transactionAmount;
+        private readonly int chequeNumber;
 
         public ChequeEntry(DateTime transactionDate, Money transactionAmount)
         {
             this.transactionDate = transactionDate;
             this.transactionAmount = transactionAmount;
+            this.chequeNumber = 123456;
         }
 
         public override bool Equals(object obj)
@@ -26,7 +28,7 @@ namespace BankingKata
         
         public override string ToString()
         {
-            return string.Format("CHQ {0} ({1})", transactionDate.ToString("dd MMM yyyy"), transactionAmount);
+            return string.Format("CHQ {2} {0} ({1})", transactionDate.ToString("dd MMM yyyy"), transactionAmount, chequeNumber);
         }
     }
 }
