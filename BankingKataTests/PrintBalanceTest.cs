@@ -89,6 +89,7 @@ namespace BankingKataTests
             Assert.That(output.ToString(), Is.EqualTo(expected));
         }
 
+        [TestCase(1)]
         [TestCase(123456)]
         [TestCase(234567)]
         public void ChequeWithdrawalIsPrinted(int chequeNumber)
