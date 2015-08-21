@@ -28,10 +28,23 @@ namespace BankingKataTests
             var money = new Money(3m);
             var account = new Account(ledger);
 
-            account.Withdraw(DateTime.Now, money);
+            var debitEntry = new ATMDebitEntry(DateTime.Now, money);
+            account.Withdraw(debitEntry);
 
-            var debitEntry = new DebitEntry(DateTime.Now, money);
             ledger.Received().Record(debitEntry);
+        }
+
+        [Test]
+        public void AccountRecordsChequeWithdrawalInTransactionLog()
+        {
+            var ledger = Substitute.For<ILedger>();
+            var money = new Money(3m);
+            var account = new Account(ledger);
+
+            var myCheque = new ChequeDebitEntry(new DateTime(2015, 07, 13), money, 100001);
+            account.Withdraw(myCheque);
+
+            ledger.Received().Record(myCheque);
         }
 
         [Test]

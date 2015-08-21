@@ -4,11 +4,11 @@ namespace BankingKata
 {
     public class Account
     {
-        private readonly ILedger _transactionLog;
+        private readonly ILedger _ledger;
 
-        public Account(ILedger transactionLog)
+        public Account(ILedger ledger)
         {
-            _transactionLog = transactionLog;
+            _ledger = ledger;
         }
 
         public Account()
@@ -19,18 +19,17 @@ namespace BankingKata
         public void Deposit(DateTime transactionDate, Money money)
         {
             var depositTransaction = new CreditEntry(transactionDate, money);
-            _transactionLog.Record(depositTransaction);
+            _ledger.Record(depositTransaction);
         }
 
         public Money CalculateBalance()
         {
-            return _transactionLog.Accept(new BalanceCalculatingVisitor(), new Money(0m));
+            return _ledger.Accept(new BalanceCalculatingVisitor(), new Money(0m));
         }
 
-        public void Withdraw(DateTime transactionDate, Money money)
+        public void Withdraw(DebitEntry debitEntry)
         {
-            var debitEntry = new DebitEntry(transactionDate, money);
-            _transactionLog.Record(debitEntry);
+            _ledger.Record(debitEntry);
         }
 
         public void PrintBalance(IPrinter printer)
@@ -41,7 +40,7 @@ namespace BankingKata
 
         public void PrintLastTransaction(IPrinter printer)
         {
-            printer.PrintLastTransaction(_transactionLog);
+            printer.PrintLastTransaction(_ledger);
         }
     }
 }

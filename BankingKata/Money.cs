@@ -33,5 +33,15 @@ namespace BankingKata
             var amount2 = other._amount;
             return new Money(amount1 - amount2);
         }
+
+        public static bool operator >(Money @this, Money other)
+        {
+            return @this._amount > other._amount;
+        }
+
+        public static bool operator <(Money @this, Money other)
+        {
+            return @this._amount < other._amount;
+        }
     }
 }
