@@ -40,19 +40,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account.cs" />
+    <Compile Include="AccountWithOverdraft.cs" />
+    <Compile Include="ArrangedOverdraft.cs" />
     <Compile Include="ChequeDebitEntry.cs" />
     <Compile Include="ATMDebitEntry.cs" />
     <Compile Include="DebitEntry.cs" />
+    <Compile Include="IAccount.cs" />
     <Compile Include="ILedger.cs" />
+    <Compile Include="IOverdraft.cs" />
     <Compile Include="ITransaction.cs" />
     <Compile Include="ITransactionVisitor.cs" />
     <Compile Include="ConsolePrinter.cs" />
     <Compile Include="Ledger.cs" />
     <Compile Include="Money.cs" />
     <Compile Include="IPrinter.cs" />
+    <Compile Include="OverdraftLimitReachedException.cs" />
+    <Compile Include="OverdrawnCharge.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CreditEntry.cs" />
     <Compile Include="BalanceCalculatingVisitor.cs" />
+    <Compile Include="UnarrangedOverdraft.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -2,7 +2,7 @@ using System;
 
 namespace BankingKata
 {
-    public class Account
+    public class Account : IAccount
     {
         private readonly ILedger _ledger;
 

@@ -32,7 +32,7 @@ namespace BankingKataTests
             account.PrintBalance(printer);
 
             var output = stringWriter.GetStringBuilder();
-            var expected = "Balance: £0.00";
+            var expected = "Balance: £0.00" + Environment.NewLine;
             Assert.That(output.ToString(), Is.EqualTo(expected));
         }
 
@@ -49,7 +49,7 @@ namespace BankingKataTests
             account.PrintBalance(printer);
 
             var output = stringWriter.GetStringBuilder();
-            var expected = "Balance: £1,234.56";
+            var expected = "Balance: £1,234.56" + Environment.NewLine;
             Assert.That(output.ToString(), Is.EqualTo(expected));
         }
 
@@ -68,7 +68,7 @@ namespace BankingKataTests
             account.PrintLastTransaction(printer);
 
             var output = stringWriter.GetStringBuilder();
-            var expected = "Last transaction: DEP 13 Jul 2015 £789.00";
+            var expected = "Last transaction: DEP 13 Jul 2015 £789.00" + Environment.NewLine;
             Assert.That(output.ToString(), Is.EqualTo(expected));
         }
 
@@ -86,7 +86,7 @@ namespace BankingKataTests
             account.PrintLastTransaction(printer);
 
             var output = stringWriter.GetStringBuilder();
-            var expected = "Last transaction: ATM 13 Jul 2015 (£123.00)";
+            var expected = "Last transaction: ATM 13 Jul 2015 (£123.00)" + Environment.NewLine;
             Assert.That(output.ToString(), Is.EqualTo(expected));
         }
 
@@ -106,7 +106,7 @@ namespace BankingKataTests
             account.PrintLastTransaction(printer);
 
             var output = stringWriter.GetStringBuilder();
-            const string expected = "Last transaction: CHQ 100001 13 Jul 2015 (£123.00)";
+            string expected = "Last transaction: CHQ 100001 13 Jul 2015 (£123.00)" + Environment.NewLine;
             Assert.That(output.ToString(), Is.EqualTo(expected));
         }
     }
